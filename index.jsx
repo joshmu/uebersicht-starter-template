@@ -49,9 +49,8 @@ export const refreshFrequency = 1000 * 60 * 60; // widget will run command once 
 
 export const command = (dispatch) => {
   fetch(apiUrl)
-    .then(response => {
-      return response.json()
-    }).then(data => {
+    .then(response => response.json())
+    .then(data => {
       dispatch({ type: 'FETCH_SUCCEEDED', data: data });
     })
     .catch((error) => {
