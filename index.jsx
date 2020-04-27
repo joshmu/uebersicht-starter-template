@@ -45,7 +45,7 @@ const apiUrl = 'https://api.covid19api.com/summary'
 }
 */
 
-export const refreshFrequency = 1000 * 60 * 60; // widget will run command once a hour 
+export const refreshFrequency = 1000 * 60 * 15; // widget will run command once every 15 minutes
 
 export const command = (dispatch) => {
   fetch(apiUrl)
