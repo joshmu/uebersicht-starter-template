@@ -60,7 +60,7 @@ export const command = (dispatch) => {
 
 export const initialState = { output: 'fetching data...' };
 
-// similar to setState (Redux)
+// similar to setState (Redux pattern), event is dispatch output
 export const updateState = (event, previousState) => {
   if (event.error) {
     return { ...previousState, output: `We got an error: ${event.error}` };
