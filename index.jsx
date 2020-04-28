@@ -63,7 +63,9 @@ export const initialState = { output: 'fetching data...' };
 // similar to setState (Redux pattern), event is dispatch output
 export const updateState = (event, previousState) => {
   if (event.error) {
-    return { ...previousState, output: `We got an error: ${event.error}` };
+      // return { ...previousState, output: `We got an error: ${event.error}` };
+      // output empty string to avoid error displayed on screen
+    return { ...previousState, output: `` };
   }
   return {
     ...previousState,
@@ -72,6 +74,7 @@ export const updateState = (event, previousState) => {
 }
 
 // react functional component
+// if output is a string then simply display
 export const render = ({ output, error }) => {
   return error ? (
     <div>Something went wrong: <strong>{String(error)}</strong></div>
