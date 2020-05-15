@@ -2,17 +2,19 @@
 import { styled } from 'uebersicht'
 
 // emotion styled components
-const Header = styled("h1")`
-  font-family: Roboto;
-  font-weight: 300;
-  font-size: 0.75rem;
-  color: white;
-  opacity: 0.8;
-`
+const App = styled('div')`
+  h1 {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: white;
+    opacity: 0.8;
+    span {
+      font-size: 0.75rem;
+      margin-right: 0.25rem;
+    }
+  }
 
-const Icon = styled('span')`
-  font-size: 0.75rem;
-  margin-right: 0.25rem;
 `
 
 // const Box = styled("div")(props => ({
@@ -63,9 +65,9 @@ export const initialState = { output: 'fetching data...' };
 // similar to setState (Redux pattern), event is dispatch output
 export const updateState = (event, previousState) => {
   if (event.error) {
-     // return { ...previousState, output: `We got an error: ${event.error}` };
-     console.error(event.error)
-     // output empty string to avoid error displayed on screen
+    // return { ...previousState, output: `We got an error: ${event.error}` };
+    console.error(event.error)
+    // output empty string to avoid error displayed on screen
     return { ...previousState, output: '' }
   }
   return {
@@ -80,8 +82,10 @@ export const render = ({ output, error }) => {
   return error ? (
     <div>Something went wrong: <strong>{String(error)}</strong></div>
   ) : (
-      typeof output === 'string' ? <p>{output}</p> : (
-        <Header><Icon>☠️</Icon>{output.Global.TotalDeaths}</Header>
-      )
+      <App>
+        {typeof output === 'string' ? <p>{output}</p> : (
+          <h1><span>☠️</span>{output.Global.TotalDeaths}</h1>
+        )}
+      </App>
     );
 }
